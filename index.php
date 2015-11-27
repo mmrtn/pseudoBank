@@ -1,3 +1,32 @@
+<?php
+session_start();
+
+function redirect()
+{
+
+    $_SESSION["failed"] = 'true';
+    header("Location: index.php");
+    exit();
+}
+
+require_once('functions.php');
+require_once('Database.php');
+if (array_key_exists('username', $_POST) && array_key_exists('password', $_POST)) {
+    if (login_auth($_POST['username'], $_POST['password'])) {
+        $user_details = get_user_details($_POST['username']);
+
+        $_SESSION["authenticated"] = 'true';
+    } else {
+        failed_login();
+        redirect();
+    }
+
+} else {
+    require('authenticated.php');
+}
+
+?>
+
 <!doctype html>
 
 <html lang="en">
@@ -17,43 +46,16 @@
         }
     </style>
 
-<?php
-
-function redirect_logout() {
-
-    header("Location: logout.php");
-    exit();
-}
-
-require_once('functions.php');
-require_once('Database.php');
-if (array_key_exists('username', $_POST) && array_key_exists('password', $_POST)) {
-    if (login_auth($_POST['username'],$_POST['password'])) {
-        $user_details=get_user_details($_POST['username']);
-        session_start();
-        $_SESSION["authenticated"] = 'true';
-    }
-    else {
-        failed_login();
-        redirect_logout();
-    }
-
-}
-else {
-    require('authenticated.php');
-    redirect_logout();
-}
-
-?>
 
 <body>
 <div id="container">
 
-    <h1>Welcome <em style="color:green;"><?=$user_details['owner_name']?></em></h1>
+    <h1>Welcome <em style="color:green;"><?= $user_details['owner_name'] ?></em></h1>
+
     <h2>Summary statement</h2>
     <ul>
-        <li>Current net credit: <?=$user_details['amount']?></li>
-        <li>Account number: <?=$user_details['account_number']?></li>
+        <li>Current net credit: <?= $user_details['amount'] ?></li>
+        <li>Account number: <?= $user_details['account_number'] ?></li>
     </ul>
 
     <form action="logout.php" id="login" method="post">
