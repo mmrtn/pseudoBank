@@ -3,6 +3,7 @@ session_start();
 
 function redirect()
 {
+
     $_SESSION["failed"] = 'true';
     header("Location: login.php");
     exit();
@@ -68,12 +69,6 @@ if (array_key_exists('username', $_POST) && array_key_exists('password', $_POST)
     <form action="logout.php" id="login" method="post">
         <input type="submit" value="Log Out!">
     </form>
-    <div>
-        <?php
-        get_user_statement($_SESSION["username"]);
-        ?>
-    </div>
-
 </div>
 </body>
 </html>

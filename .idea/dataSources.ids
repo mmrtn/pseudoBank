@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - pseudo_bank@localhost" uuid="cb6b8b3d-85fb-4e81-8f7f-94206087d41c">
+    <database-info product="MySQL" version="5.6.21" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="pseudo_bank"/>
+    <table name="transaction" schema="" catalog="pseudo_bank" type="TABLE">
+      <column name="transaction_id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="origin_account" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="destination_account" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" def="JyIiJw=="/>
+      <column name="amount" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <primary-key name="PRIMARY" columns="transaction_id"/>
+      <foreign-key name="transaction_ibfk_1" columns="origin_account" ref-table="users" ref-schema="" ref-catalog="pseudo_bank" ref-columns="account_number" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="transaction_ibfk_2" columns="destination_account" ref-table="users" ref-schema="" ref-catalog="pseudo_bank" ref-columns="account_number" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="transaction_id" unique="true" columns="transaction_id"/>
+    </table>
+    <table name="users" schema="" catalog="pseudo_bank" type="TABLE">
+      <column name="user_id" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="owner_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="account_number" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="amount" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7" def="MA=="/>
+      <primary-key name="PRIMARY" columns="user_id"/>
+      <exported-key name="transaction_ibfk_1" table="transaction" schema="" catalog="pseudo_bank" columns="origin_account"/>
+      <exported-key name="transaction_ibfk_2" table="transaction" schema="" catalog="pseudo_bank" columns="destination_account"/>
+      <index name="account_number" unique="true" columns="account_number"/>
+      <index name="user_id" unique="true" columns="user_id"/>
+    </table>
+  </data-source>
+</component>

@@ -38,7 +38,7 @@ function get_visitor_information() {
 
 function log_query($line) {
     
-    file_put_contents('visitor.log', PHP_EOL . $line, FILE_APPEND);
+    file_put_contents('logmonitor/visitor.log', PHP_EOL . $line, FILE_APPEND);
 }
 
 date_default_timezone_set('Europe/Tallinn');
