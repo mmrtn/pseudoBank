@@ -5,7 +5,7 @@ $msg = (isset($_SESSION["failed"])) ? 'Incorrect username or password!' : '';
 if ($msg !== '') {
     unset($_SESSION["failed"]);
 }
-require_once('Db.php');
+require_once 'Db.php';
 require_once 'Banking.php';
 // die("has_enough_fund: ".Banking::has_enough_fund(551111111112, 1900));
 //echo date('h:m:s').'<br>';
