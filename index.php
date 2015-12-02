@@ -8,8 +8,8 @@ function redirect()
     exit();
 }
 
+require_once('Db.php');
 require_once('functions.php');
-require_once('Database.php');
 if (array_key_exists('username', $_POST) && array_key_exists('password', $_POST)) {
     if (login_auth($_POST['username'], $_POST['password'])) {
         $user_details = get_user_details($_POST['username']);
