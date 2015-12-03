@@ -21,6 +21,7 @@ function login_auth($login_name, $login_pwd)
 
     $query_result = mysqli_query($db, $sql)->fetch_assoc();
 
+
     if ($query_result['password'] === $login_pwd) {
         return true;
     }

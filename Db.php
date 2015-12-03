@@ -51,7 +51,7 @@ class Db
 }
 
 /* USE LIKE THAT:
-    $db = Database::getInstance();
+    $db = Db::getInstance();
     $mysqli = $db->getConnection();
     $sql_query = "SELECT foo FROM .....";
     $result = $mysqli->query($sql_query);

@@ -31,7 +31,6 @@ class WebAPI
             header('Content-Type: application/json; charset=utf-8');
 
             // Format data into a JSON response
-            // trim($api_response['song']);
             $json_response = json_encode($api_response);
 
             // Deliver formatted data
