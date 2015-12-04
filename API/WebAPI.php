@@ -20,7 +20,8 @@ class WebAPI
         );
 
         // Set HTTP Response
-        header("Access-Control-Allow-Origin: *");
+        // CORS ALLOWED OR NOT
+        // header("Access-Control-Allow-Origin: *");
 
         header('HTTP/1.1 ' . $api_response['status'] . ' ' . $http_response_code[$api_response['status']]);
 
