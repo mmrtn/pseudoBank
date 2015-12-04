@@ -58,9 +58,10 @@ require_once 'Banking.php';
             <input name="username" id="Account ID" class="form-control" placeholder="Account ID"
                    required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
+            <br/>
             <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"
                    required>
-
+            <br/>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </form>
 
