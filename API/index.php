@@ -5,6 +5,7 @@ require_once('WebAPI.php');
 require_once('Api_methods.php');
 
 // $token1='xNFQGbrBJdRbywG4GSFBaRWGR';
+
 $api_response = array();
 $p = $_POST;
 
@@ -40,7 +41,7 @@ function all_keys_valid($post)
 if (isset($_POST)) {
     if (all_keys_valid($_POST)) {
         $api_response['status'] = 200;
-        $api_response['banklink'] = 'http://pseudobank.esy.es/BANKLINK/?' . Api_methods::create_banklink($p['apikey'], $p['amount'], $p['description']);
+        $api_response['banklink'] = 'http://pseudobank.esy.es/BANKLINK/?link=' . Api_methods::create_banklink($p['apikey'], $p['amount'], $p['description']);
 
     } else {
         $api_response['status'] = 400;
@@ -59,5 +60,3 @@ else {
     header('Location: instructions.php');
     exit();
 }
-
-// 9NZXCbrBJdRbywG4GSFBaRB2i
