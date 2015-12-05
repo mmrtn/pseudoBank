@@ -38,9 +38,7 @@ class Api_methods
         $insert_format="INSERT INTO `banklinks`(`banklink`, `user_id`, `amount`, `description`) VALUES
         ('%s', (SELECT `user_id` FROM `tokens` WHERE `token`='$token'), '%s', '%s');";
 
-
         $insert_query=sprintf($insert_format, $banklink, $amount, $description);
-        var_dump($insert_query);
 
         mysqli_query($db, $insert_query);
 
