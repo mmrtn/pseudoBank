@@ -1,0 +1,62 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="scripts/shCore.js"></script>
+    <script type="text/javascript" src="scripts/shBrushPhp.js"></script>
+    <link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+    <meta charset="UTF-8">
+    <title>Pseudobank banklink API</title>
+</head>
+<body>
+<div>
+    <h2>How to use pseudobank payment api:</h2>
+    <p>You have to use POST request and following parameters: </p>
+    <ol>
+        <li>apikey - Your API key (only serverside, CORS is disabled)</li>
+        <li>amount - any nr between 1.00 - 10000.00</li>
+        <li>description - string (120 chars MAX)</li>
+    </ol>
+    <p>The API currently uses only JSON format</p>
+</div>
+
+<h3>PHP example:</h3>
+<pre class="brush: php;">
+
+$apikey = 'YOUR pre-registered API-KEY';
+$amount = 99.89;
+$description = 'description of your product/order';
+
+function get_banklink($apikey, $amount, $description) {
+    $url = 'http://pseudobank.esy.es/API/';
+    $data = array('apikey' => $apikey, 'amount' => $amount, 'description' => $description);
+
+    $options = array(
+        'http' => array(
+            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method'  => 'POST',
+            'content' => http_build_query($data),
+        ),
+    );
+    $context  = stream_context_create($options);
+    $json = file_get_contents($url, false, $context);
+
+    $search_results = json_decode($json, TRUE);
+    if ($search_results === NULL)
+        die('json query error!');
+
+    return $search_results['banklink'];
+}
+
+echo get_banklink($apikey, $amount, $description);
+
+</pre>
+
+<h3>Test with Postman:</h3>
+<div>
+    <img src="../../assets/img/api.JPG" alt="how to use pseudobank payment api">
+</div>
+
+</body>
+</html>

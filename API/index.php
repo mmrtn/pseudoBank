@@ -30,7 +30,7 @@ function all_keys_valid($post)
         return false;
     }
 
-    if (ctype_alnum($post['apikey']) && !Api_methods::is_valid_token($post['apikey'])) {
+    if (!ctype_alnum($post['apikey']) && strlen($post['apikey']) > 50 && !Api_methods::is_valid_token($post['apikey'])) {
         $api_response['message'] = "Invalid APIKEY!";
         return false;
     }
