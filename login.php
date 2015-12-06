@@ -20,7 +20,6 @@ require_once 'Banking.php';
     <link rel="icon" href="assets/img/coin.gif">
 
     <title>PSEUDO BANK</title>
-
     <!-- Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -60,9 +59,8 @@ require_once 'Banking.php';
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </form>
 
-
     </div>
-    <!-- /container -->
+
 </div>
 
 </body>

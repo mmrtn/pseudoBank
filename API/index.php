@@ -31,7 +31,7 @@ function all_keys_valid($post)
     }
 
 
-    if (!is_numeric($post['amount']) || $post['amount'] <= 0 || $post['amount'] > 10000) {
+    if (!is_numeric($post['amount']) || $post['amount'] < 1 || $post['amount'] > 10000) {
         $api_response['message'] = "amount must be between 1.0-10.000";
         return false;
     }
