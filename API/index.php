@@ -25,6 +25,11 @@ function all_keys_valid($post)
         }
     }
 
+    if (strlen($post['description'])>120) {
+        $api_response['message'] = "Description can be up to 120 character long";
+        return false;
+    }
+
     if (ctype_alnum($post['apikey']) && !Api_methods::is_valid_token($post['apikey'])) {
         $api_response['message'] = "Invalid APIKEY!";
         return false;
@@ -41,7 +46,7 @@ function all_keys_valid($post)
 if (isset($_POST)) {
     if (all_keys_valid($_POST)) {
         $api_response['status'] = 200;
-        $api_response['banklink'] = 'http://pseudobank.esy.es/BANKLINK/?link=' . Api_methods::create_banklink($p['apikey'], $p['amount'], $p['description']);
+        $api_response['banklink'] = 'http://pseudobank.esy.es/BANKLINK/?link=' . Api_methods::create_banklink($p['apikey'], $p['amount'], htmlspecialchars($p['description']));
 
     } else {
         $api_response['status'] = 400;
