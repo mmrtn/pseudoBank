@@ -4,7 +4,7 @@ $db = Db::getInstance()->getConnection();
 
 function failed_login()
 {
-    if (!$_SERVER['SERVER_NAME'] === 'localhost') {
+    if ($_SERVER['SERVER_NAME'] !== 'localhost') {
         date_default_timezone_set('Europe/Tallinn');
         ini_set('date.timezone', 'Europe/Tallinn');
         require_once 'login_log.php';
