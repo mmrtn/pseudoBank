@@ -45,7 +45,9 @@ function get_user_statement($username)
 {
     global $db;
 
-    $sql = "SELECT transaction.`date`,transaction.`description`, transaction.`amount`, (SELECT users.owner_name FROM users WHERE transaction.`origin_account`=users.account_number) AS 'FROM'
+    $sql = "SELECT transaction.`date`,transaction.`description`, transaction.`amount`,
+    (SELECT users.owner_name FROM users WHERE transaction.`origin_account`=users.account_number) AS 'FROM',
+    (SELECT users.owner_name FROM users WHERE transaction.`destination_account`=users.account_number) AS 'TO'
     FROM `transaction`
     WHERE
     (transaction.`origin_account`= (SELECT account_number FROM users WHERE username=" . "'" . $username . "'" . "))
