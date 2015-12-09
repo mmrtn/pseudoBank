@@ -35,19 +35,19 @@ if (!empty($_SESSION["authenticated"]) && $_SESSION['confirmed'] && $_SESSION["a
 
         <h2 style="color: blue"><?= $_SESSION['confirmed'] ?></h2>
 
-                <p>Date: <?= date('d-m-Y') ?></p>
+        <p>Date: <?= date('d-m-Y') ?></p>
 
-                <p>Payer name: <?= $_SESSION['owner_name'] ?></p>
+        <p>Payer name: <?= $_SESSION['owner_name'] ?></p>
 
-                <p>Payer account: <?= $_SESSION['account_number'] ?></p>
+        <p>Payer account: <?= $_SESSION['account_number'] ?></p>
 
-                <p>Beneficiary name: <?= $_SESSION['beneficiary_name'] ?></p>
+        <p>Beneficiary name: <?= $_SESSION['beneficiary_name'] ?></p>
 
-                <p>Beneficiary account: <?= $_SESSION['beneficiary_account'] ?></p>
+        <p>Beneficiary account: <?= $_SESSION['beneficiary_account'] ?></p>
 
-                <p>Amount: <?= $_SESSION['amount'] ?></p>
+        <p>Amount: <?= $_SESSION['amount'] ?></p>
 
-                <p>Description: <?= $_SESSION['description'] ?></p>
+        <p>Description: <?= $_SESSION['description'] ?></p>
 
     </div>
     </body>

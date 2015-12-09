@@ -32,19 +32,16 @@ if (isset($_POST) && empty($_SESSION["authenticated"]) || $_SESSION["authenticat
 }
 
 
-
-
 if (!empty($_SESSION["authenticated"]) && $_SESSION["authenticated"]) {
 
     if (array_key_exists('confirm', $_POST)) {
-        $transfer=Banking::tranfer($_SESSION['account_number'], $_SESSION['beneficiary_account'], $_SESSION['amount'], $_SESSION['description']);
-        if ($transfer==='Your payment is made') {
+        $transfer = Banking::tranfer($_SESSION['account_number'], $_SESSION['beneficiary_account'], $_SESSION['amount'], $_SESSION['description']);
+        if ($transfer === 'Your payment is made') {
             $_SESSION['confirmed'] = $transfer;
             Banklink::delete_banklink($_SESSION["banklink"]);
             header('Location:confirmed.php');
             exit();
-        }
-        else {
+        } else {
             echo "<h1>$transfer</h1>";
         }
     }
@@ -105,7 +102,8 @@ if (!empty($_SESSION["authenticated"]) && $_SESSION["authenticated"]) {
         <p>Description: <?= $_SESSION['description'] ?></p>
 
         <form action="confirmation.php" method="post">
-            <input id='confirm' class="btn btn-lg btn-primary btn-block" name='confirm' type="submit" value="CONFIRM PAYMENT"/>
+            <input id='confirm' class="btn btn-lg btn-primary btn-block" name='confirm' type="submit"
+                   value="CONFIRM PAYMENT"/>
         </form>
         <br/>
 

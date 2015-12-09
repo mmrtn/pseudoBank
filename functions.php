@@ -59,9 +59,20 @@ function get_user_statement($username)
     $query_result = mysqli_query($db, $sql);
     return $query_result;
 
-//    foreach ($query_result as $row) {
-//        echo "<p>" . var_dump($row) . "</p>";
-//    }
+}
+
+function logout()
+{
+    session_start();
+    session_unset();
+    session_destroy();
+    session_write_close();
+    setcookie(session_name(), '', 0, '/');
+    session_regenerate_id(true);
+
+
+    header('Location: index.php');
+    die("SESSION IS OVER!");
 }
 
 ?>
