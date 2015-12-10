@@ -78,7 +78,7 @@ if (isset($_POST) && strpos($ip, $bank_ip) !== false) {
 
     deliver_json_response($api_response);
 
-    if ($api_response['status'] === 200) {
+    if ($api_response['status']===200) {
 
         // DO SOMETHING USEFUL!
 
