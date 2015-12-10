@@ -45,6 +45,8 @@ function all_keys_valid($post)
 
 if (isset($_POST)) {
     if (all_keys_valid($_POST)) {
+        if (strpos($p['description'], "'")!==false) {
+        }
         $api_response['status'] = 200;
         $api_response['banklink'] = 'http://pseudobank.esy.es/BANKLINK/?link=' . Api_methods::create_banklink($p['apikey'], $p['amount'], htmlspecialchars($p['description']));
 
