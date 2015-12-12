@@ -5,6 +5,8 @@ $p = $_POST;
 $ip = $_SERVER['REMOTE_ADDR'];
 $bank_ip = '185.28.20.'; //main part of Pseudobank IP - last nr might change...
 $api_response['ip'] = $ip;
+
+// CHANGE YOUR BUSINESS APIKEY!
 $apikey = '1234567890xxxxSECRET';
 
 function deliver_json_response($api_response)
@@ -33,7 +35,7 @@ function all_keys_valid($post)
     global $api_response;
     global $apikey;
 
-    $keys = array('apikey', 'description', 'amount'); //All MUST have keys!
+    $keys = array('apikey', 'description', 'amount', 'payerName'); //All MUST have keys!
 
     foreach ($keys as $k) {
         if (!array_key_exists($k, $post)) {
@@ -43,6 +45,7 @@ function all_keys_valid($post)
             return false;
 
         }
+
     }
 
     if (strlen($post['description']) > 120) {
@@ -84,4 +87,10 @@ if (isset($_POST) && strpos($ip, $bank_ip) !== false) {
 
     }
 
+}
+
+else {
+    $api_response['message'] = 'Bad request';
+    $api_response['status'] = 400;
+    deliver_json_response($api_response);
 }

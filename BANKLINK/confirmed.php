@@ -49,6 +49,17 @@ if (!empty($_SESSION["authenticated"]) && $_SESSION['confirmed'] && $_SESSION["a
 
         <p>Description: <?= $_SESSION['description'] ?></p>
 
+        <br/>
+
+        <?php if (!empty($_SESSION['return_url'])) { ?>
+            <a class="btn btn-lg btn-primary" href="<?=$_SESSION['return_url'] ?>">BACK TO ONLINE SHOP</a>
+            <br/>
+            <br/>
+        <?php }; ?>
+
+
+        <a class="btn btn-sm btn-warning" href="../index.php">BACK TO BANK</a>
+
     </div>
     </body>
     </html>

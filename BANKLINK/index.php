@@ -17,6 +17,9 @@ if (array_key_exists('link', $_GET)) {
         $_SESSION['amount']=$payment_details['amount'];
         $_SESSION['description']=$payment_details['description'];
 
+        $_SESSION['confirm_url']=$payment_details['confirm_url'];
+        $_SESSION['return_url']=$payment_details['return_url'];
+
         header('Location:login.php');
         exit();
     }

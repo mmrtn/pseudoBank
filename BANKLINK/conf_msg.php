@@ -2,10 +2,12 @@
 $apikey = '1234567890xxxxSECRET';
 $amount = 99.89;
 $description = 'description abcdt# order nr 111222333 / product etc';
-function send_confmsg($apikey, $amount, $description)
+$owner_name='John Doe';
+
+function send_confmsg($apikey, $amount, $description, $owner_name)
 {
     $url = 'http://webapi.esy.es/endpoint/';
-    $data = array('apikey' => $apikey, 'amount' => $amount, 'description' => $description);
+    $data = array('apikey' => $apikey, 'amount' => $amount, 'description' => $description, 'payerName'=>$owner_name);
 
     $options = array(
         'http' => array(
@@ -24,4 +26,4 @@ function send_confmsg($apikey, $amount, $description)
     return $search_results;
 }
 
-print_r(send_confmsg($apikey, $amount, $description));
+print_r(send_confmsg($apikey, $amount, $description, $owner_name));

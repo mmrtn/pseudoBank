@@ -24,11 +24,10 @@ class Banklink
 
         $db = Db::getInstance()->getConnection();
 
-        $sql = "SELECT banklinks.*,users.account_number, users.owner_name  FROM `banklinks`
-                INNER JOIN users
-                ON banklinks.user_id=users.user_id
-                WHERE
-                banklinks.banklink='" . mysqli_real_escape_string($db, $banklink) . "'";
+        $sql = "SELECT banklinks.*,users.account_number, users.owner_name, tokens.return_url, tokens.confirm_url FROM `banklinks`
+                INNER JOIN users ON banklinks.user_id=users.user_id
+                INNER JOIN tokens ON banklinks.user_id=tokens.user_id
+                WHERE banklinks.banklink='" . mysqli_real_escape_string($db, $banklink) . "'";
         $result = mysqli_query($db, $sql)->fetch_assoc();
 
         return $result;
