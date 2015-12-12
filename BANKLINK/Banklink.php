@@ -57,5 +57,32 @@ class Banklink
         mysqli_query($db, $sql);
     }
 
+
+    static function send_cofirmation($url, $amount, $description, $owner_name, $apikey='1234567890xxxxSECRET')
+    {
+        $data = array('apikey' => $apikey, 'amount' => $amount, 'description' => $description, 'payerName'=>$owner_name);
+
+        $options = array(
+            'http' => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data),
+            ),
+        );
+        try {
+            $context = stream_context_create($options);
+            $json = file_get_contents($url, false, $context);
+
+            $search_results = json_decode($json, TRUE);
+                //        if ($search_results === NULL)
+                //            die('json query error!');
+            return $search_results['status'];
+
+        }
+        catch (Exception $e) {
+            return null;
+        }
+    }
+
 }
 

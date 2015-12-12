@@ -54,6 +54,12 @@ if (!empty($_SESSION["authenticated"]) && $_SESSION['confirmed'] && $_SESSION["a
         <?php if (!empty($_SESSION['return_url'])) { ?>
             <a class="btn btn-lg btn-primary" href="<?=$_SESSION['return_url'] ?>">BACK TO ONLINE SHOP</a>
             <br/>
+        <?php }; ?>
+
+
+        <?php if (!empty($_SESSION['confirmation_sent'])) { ?>
+            <p id="<?=$_SESSION['confirmation_sent'] ?>">confirmation sent</p>
+            <br/>
             <br/>
         <?php }; ?>
 

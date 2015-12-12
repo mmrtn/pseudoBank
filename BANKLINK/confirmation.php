@@ -38,6 +38,12 @@ if (!empty($_SESSION["authenticated"]) && $_SESSION["authenticated"]) {
         $transfer = Banking::tranfer($_SESSION['account_number'], $_SESSION['beneficiary_account'], $_SESSION['amount'], $_SESSION['description']);
         if ($transfer === 'Your payment is made') {
             $_SESSION['confirmed'] = $transfer;
+
+
+            if (!empty($_SESSION['confirm_url'])) {
+                $_SESSION['confirmation_sent'] = Banklink::send_cofirmation($_SESSION['confirm_url'], $_SESSION['amount'], $_SESSION['description'], $_SESSION['owner_name']);
+            }
+
             Banklink::delete_banklink($_SESSION["banklink"]);
             header('Location:confirmed.php');
             exit();
