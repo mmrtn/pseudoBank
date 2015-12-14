@@ -3,7 +3,7 @@
 $api_response = array();
 $p = $_POST;
 $ip = $_SERVER['REMOTE_ADDR'];
-$bank_ip = '185.28.20.'; //main part of Pseudobank IP - last nr might change...
+$bank_ip = '185.28.20.';  //main part of Pseudobank IP - last nr might change...
 $api_response['ip'] = $ip;
 
 // CHANGE YOUR BUSINESS APIKEY!
@@ -83,7 +83,9 @@ if (isset($_POST) && strpos($ip, $bank_ip) !== false) {
 
     if ($api_response['status']===200) {
 
-        // DO SOMETHING USEFUL!
+        // REPLACE IT WITH YOUR OWN CODE IF NEEDED...
+        $line = 'From: '.$p['payerName'].' for '.$p['description'].' : '.$p['amount'].'$';
+        file_put_contents('confirmation.txt', PHP_EOL . $line, FILE_APPEND);
 
     }
 
