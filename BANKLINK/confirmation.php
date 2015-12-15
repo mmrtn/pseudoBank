@@ -52,7 +52,7 @@ if (!empty($_SESSION["authenticated"]) && $_SESSION["authenticated"]) {
         }
     }
 
-    if (array_key_exists('cancle', $_POST)) {
+    if (array_key_exists('cancel', $_POST)) {
         Banklink::delete_banklink($_SESSION["banklink"]);
         Banklink::logout();
     }
@@ -114,7 +114,7 @@ if (!empty($_SESSION["authenticated"]) && $_SESSION["authenticated"]) {
         <br/>
 
         <form action="confirmation.php" method="post">
-            <input id='cancle' class="btn btn-lg btn-danger btn-block" name='cancle' type="submit" value="CANCLE"/>
+            <input id='cancel' class="btn btn-lg btn-danger btn-block" name='cancel' type="submit" value="CANCEL"/>
         </form>
 
     </div>

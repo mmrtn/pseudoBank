@@ -60,10 +60,10 @@ if (!empty($_SESSION["authenticated"]) && $_SESSION['confirmed'] && $_SESSION["a
         <?php if (!empty($_SESSION['confirmation_sent'])) { ?>
             <p id="<?=$_SESSION['confirmation_sent'] ?>">confirmation sent</p>
             <br/>
-            <br/>
+
         <?php }; ?>
 
-
+        <br/>
         <a class="btn btn-sm btn-warning" href="../index.php">BACK TO BANK</a>
 
     </div>
